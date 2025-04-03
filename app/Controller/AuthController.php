@@ -23,9 +23,22 @@ class AuthController
         }
     }
 
+    function render_signup(): void
+    {
+        View::render("auth/register");
+    }
+
     function signup(): void
     {
+        $data = [
+            'username' => $_POST['nama'],
+            'email' => $_POST['email'],
+            'password' => $_POST['password'],
+            'confirm_password' => $_POST['retype_password']
+        ];
+
         
+
     }
 
     

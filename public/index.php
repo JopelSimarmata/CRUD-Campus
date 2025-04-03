@@ -8,8 +8,10 @@ use Jopel\Mhs\Controller\MhsController;
 
 Router::add('GET','/login', AuthController::class, 'index' );
 Router::add('POST','/login', AuthController::class, 'login' );
-Router::add('GET','/dashboard', MhsController::class, 'index' );
+Router::add('GET','/register', AuthController::class, 'render_signup');
+Router::add('POST','/register', AuthController::class, 'signup');
 
+Router::add('GET','/dashboard', MhsController::class, 'index' );
 Router::add('GET','/create', MhsController::class, 'enroll');
 Router::run();
 
