@@ -2,7 +2,10 @@
 
 namespace Jopel\Mhs\Controller;
 
+use Exception;
+use Jopel\Mhs\App\FlashMassage;
 use Jopel\Mhs\App\View;
+use Jopel\Mhs\Model\User;
 
 class AuthController
 {
@@ -30,6 +33,7 @@ class AuthController
 
     function signup(): void
     {
+
         $data = [
             'username' => $_POST['nama'],
             'email' => $_POST['email'],
@@ -37,7 +41,33 @@ class AuthController
             'confirm_password' => $_POST['retype_password']
         ];
 
-        
+
+
+
+
+        if(empty(trim($data["username"])) || empty(trim($data["email"])) || empty(trim($data["password"])) || empty(trim($data["confirm_password"]))){
+            FlashMassage::setFlashMessage("error" , "Form tidak boleh kosong");
+            header("Location: /register");
+            exit;
+        }
+
+        if($data['password'] != $data["confirm_password"]){
+            FlashMassage::setFlashMessage("error" , "Konfirmasi password harus sama dengan password");
+            header("Location: /register");
+            exit;
+        }
+
+        $model = new User();
+        try {
+            $model->createUser($data);
+            FlashMassage::setFlashMessage("succes", "Registrasi Berhasil");
+            header("Location: /login");
+            exit;
+        } catch (Exception $exception) {
+            FlashMassage::setFlashMessage("errors", $exception->getMessage());
+            header("Location: /register");
+        }
+
 
     }
 

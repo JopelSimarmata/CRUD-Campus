@@ -1,10 +1,3 @@
-<?php
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    var_dump($_POST); // Menampilkan semua data yang dikirim melalui POST
-    exit; // Menghentikan eksekusi agar hanya data POST yang ditampilkan
-}
-?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,11 +7,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <title>Jopel | Registration Page</title>
   <?php require __DIR__ . "/../layouts/headlinks.php" ?>
 
-
-
-
-
-
+  <?php 
+  use Jopel\Mhs\App\FlashMassage;
+  FlashMassage::flashMessage();
+  ?>
+  
   <div class="card">
     <div class="card-body register-card-body">
       <p class="login-box-msg">Register a new membership</p>
