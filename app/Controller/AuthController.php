@@ -19,11 +19,18 @@ class AuthController
         $username = $_POST['username'];
         $password = $_POST['password'];
 
-        if($username == '123' && $password == '123'){
+        $model = new User();
+        $result = $model->authUser($username, $password);
+        if(!empty($result)){
+            FlashMassage::setFlashMessage("success", "Login berhasil");
             header('Location: /dashboard');
+            exit;
         } else {
+            FlashMassage::setFlashMessage("gagal", "Username atau Pssword salah");
             header('Location: /login');
+            exit;
         }
+
     }
 
     function render_signup(): void
@@ -40,10 +47,6 @@ class AuthController
             'password' => $_POST['password'],
             'confirm_password' => $_POST['retype_password']
         ];
-
-
-
-
 
         if(empty(trim($data["username"])) || empty(trim($data["email"])) || empty(trim($data["password"])) || empty(trim($data["confirm_password"]))){
             FlashMassage::setFlashMessage("error" , "Form tidak boleh kosong");

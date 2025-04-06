@@ -6,7 +6,9 @@
   <title>Jopel | Log in</title>
   <?php require __DIR__ . "/../layouts/headlinks.php" ?>
 
-
+  <?php use Jopel\Mhs\App\FlashMassage;
+  FlashMassage::flashMessage();
+  ?>
 
   <!-- /.login-logo -->
   <div class="card">

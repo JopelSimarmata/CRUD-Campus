@@ -62,6 +62,16 @@ class User
 
     }
 
+    public function authUser($username, $password) {
+        $user = $this->getUserByUsername($username);
+
+        if (isset($user) && password_verify($password, $user['password'])) {
+            return $user;
+        }
+        return [];
+    }
+
+
 
 
 
