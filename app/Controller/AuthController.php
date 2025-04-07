@@ -76,6 +76,7 @@ class AuthController
 
     function logout(){
         unset($_SESSION['username']);
+        session_destroy();
         header('Location: /login');
     } 
 
