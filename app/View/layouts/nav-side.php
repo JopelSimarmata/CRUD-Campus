@@ -1,4 +1,3 @@
-
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
@@ -153,8 +152,14 @@
           <img src="img/jopel.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Jopel Simarmata</a>
+          <a href="#" class="d-block"><?=$_SESSION["username"];?></a>
         </div>
+      </div>
+
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <form action ="/logout" method="post">
+        <button type="submit" class="btn btn-danger">Log Out</button>
+      </form>
       </div>
 
       <!-- SidebarSearch Form -->

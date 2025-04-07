@@ -15,6 +15,7 @@ Router::add('POST','/register', AuthController::class, 'signup');
 
 Router::add('GET','/dashboard', MhsController::class, 'index' );
 Router::add('GET','/create', MhsController::class, 'enroll');
+Router::add('POST', '/logout', AuthController::class, 'logout');
 
 
 Router::run();

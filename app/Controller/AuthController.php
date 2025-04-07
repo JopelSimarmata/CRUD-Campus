@@ -1,5 +1,4 @@
 <?php
-
 namespace Jopel\Mhs\Controller;
 
 use Exception;
@@ -23,6 +22,7 @@ class AuthController
         $result = $model->authUser($username, $password);
         if(!empty($result)){
             FlashMassage::setFlashMessage("success", "Login berhasil");
+            $_SESSION["username"] = $username;
             header('Location: /dashboard');
             exit;
         } else {
@@ -73,6 +73,11 @@ class AuthController
 
 
     }
+
+    function logout(){
+        unset($_SESSION['username']);
+        header('Location: /login');
+    } 
 
     
 

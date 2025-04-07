@@ -8,7 +8,12 @@ class MhsController
 {
     function index(): void 
     {
-        View::render('dashboard');
+        if(isset($_SESSION["username"])){
+            View::render('dashboard');  
+        } else {
+            header('Location: /login');
+        }
+ 
     }
 
     function enroll(): void
