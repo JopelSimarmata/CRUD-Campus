@@ -1,3 +1,8 @@
+<?php 
+var_dump($_SESSION);
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -89,7 +94,47 @@
         <!-- /.row -->
       </div>
     </section>
+
+    <section class="container-fluid">
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">No</th>
+            <th scope="col">Name</th>
+            <th scope="col">Gmail</th>
+          </tr>
+        </thead>
+        <tbody>
+
+        <?php
+
+          $user = new \Jopel\Mhs\Model\User;
+
+          $data = $user->getAllUser();
+          $iteration = 0;
+        ?>
+
+        <?php foreach($data as $datas): ?>
+          <?php $iteration++; ?>
+          <tr>
+            <th scope="row"><?=$iteration;?></th>
+            <td><?= $datas['username'];?></td>
+            <td><?= $datas['email']?></td>
+          </tr>
+        <?php endforeach; ?> 
+        </tbody>
+      </table>
+
+
+    </section>
   </div>
+
+
+
+
+
+
 
 <!-- CONTENT -->
 
@@ -100,7 +145,7 @@
   <!-- /.content-wrapper -->
 
   <?php require __DIR__ . "/layouts/footer.php" ?>
-
+  
   
 
 

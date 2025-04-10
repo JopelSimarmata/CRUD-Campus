@@ -56,10 +56,6 @@ class User
 
         $this->database->execute();
 
-        
-        
-
-
     }
 
     public function authUser($username, $password) {
